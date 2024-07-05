@@ -16,6 +16,8 @@ class _loginPageState extends State<loginPage>
   late AnimationController _controller;
   late Animation<Offset> _offsetAnimation;
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final TextEditingController _userIdController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -123,7 +125,7 @@ class _loginPageState extends State<loginPage>
                                       ),
                                       Container(
                                         width:
-                                            MediaQuery.sizeOf(context).width *
+                                            MediaQuery.of(context).size.width *
                                                 0.3,
                                         height: 70,
                                         decoration: BoxDecoration(
@@ -142,17 +144,15 @@ class _loginPageState extends State<loginPage>
                                                   bottom: 10,
                                                   end: 20),
                                           child: TextField(
+                                            controller: _userIdController,
                                             decoration: InputDecoration(
-                                              hintText: 'Id987',
+                                              hintText: 'Userid',
                                               hintStyle: TextStyle(
                                                 color: Color(0xFF7E7E7E),
                                                 letterSpacing: 0,
                                               ),
                                               border: InputBorder.none,
                                             ),
-                                            onTap: () {
-                                              setState(() {});
-                                            },
                                           ),
                                         ),
                                       ),
@@ -178,39 +178,39 @@ class _loginPageState extends State<loginPage>
                                         ),
                                       ),
                                       Container(
-                                          width:
-                                              MediaQuery.sizeOf(context).width *
-                                                  0.3,
-                                          height: 70,
-                                          decoration: BoxDecoration(
-                                            color: Colors.white,
-                                            borderRadius:
-                                                BorderRadius.circular(20),
-                                            border: Border.all(
-                                              color: Color(0x33323232),
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                0.3,
+                                        height: 70,
+                                        decoration: BoxDecoration(
+                                          color: Colors.white,
+                                          borderRadius:
+                                              BorderRadius.circular(20),
+                                          border: Border.all(
+                                            color: Color(0x33323232),
+                                          ),
+                                        ),
+                                        child: Padding(
+                                          padding:
+                                              const EdgeInsetsDirectional.only(
+                                                  start: 20.0,
+                                                  top: 10,
+                                                  bottom: 10,
+                                                  end: 20),
+                                          child: TextField(
+                                            controller: _passwordController,
+                                            obscureText: true,
+                                            decoration: InputDecoration(
+                                              hintText: 'Password',
+                                              hintStyle: TextStyle(
+                                                color: Color(0xFF7E7E7E),
+                                                letterSpacing: 0,
+                                              ),
+                                              border: InputBorder.none,
                                             ),
                                           ),
-                                          child: Padding(
-                                            padding: const EdgeInsetsDirectional
-                                                .only(
-                                                start: 20.0,
-                                                top: 10,
-                                                bottom: 10,
-                                                end: 20),
-                                            child: TextField(
-                                              decoration: InputDecoration(
-                                                hintText: '*******',
-                                                hintStyle: TextStyle(
-                                                  color: Color(0xFF7E7E7E),
-                                                  letterSpacing: 0,
-                                                ),
-                                                border: InputBorder.none,
-                                              ),
-                                              onTap: () {
-                                                setState(() {});
-                                              },
-                                            ),
-                                          )),
+                                        ),
+                                      ),
                                     ],
                                   ),
                                   Padding(
@@ -220,14 +220,7 @@ class _loginPageState extends State<loginPage>
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         ElevatedButton(
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      Page1()),
-                                            );
-                                          },
+                                          onPressed: _login,
                                           style: ElevatedButton.styleFrom(
                                             backgroundColor: Color(
                                                 0xFF845EF2), // Background color
@@ -256,7 +249,7 @@ class _loginPageState extends State<loginPage>
                                             ),
                                           ),
                                           child: Text('Login'),
-                                        )
+                                        ),
                                       ],
                                     ),
                                   ),
@@ -343,5 +336,24 @@ class _loginPageState extends State<loginPage>
       parent: _controller,
       curve: Curves.bounceOut,
     ));
+  }
+
+  void _login() {
+    String userId = _userIdController.text;
+    String password = _passwordController.text;
+
+    if (userId == 'demo' && password == '1234') {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Page1()),
+      );
+    } else {
+      // Show error message or handle invalid login
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Invalid login ID or password'),
+        ),
+      );
+    }
   }
 }
