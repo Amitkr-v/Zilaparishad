@@ -339,10 +339,10 @@ class _loginPageState extends State<loginPage>
   }
 
   void _login() {
-    String userId = _userIdController.text;
+    String userId = _userIdController.text.toUpperCase();
     String password = _passwordController.text;
 
-    if (userId == 'demo' && password == '1234') {
+    if (userId == 'DEMO' && password == '1234') {
       Navigator.push(
         context,
         MaterialPageRoute(builder: (context) => Page1()),
