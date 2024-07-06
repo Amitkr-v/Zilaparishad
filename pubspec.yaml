@@ -119,9 +119,9 @@ flutter:
     #- family: AmsterdamOne
      # fonts:
       #  - asset: assets/fonts/AmsterdamOne.ttf
-    #- family: ArchivoBlack
-     # fonts:
-      #  - asset: assets/fonts/ArchivoBlack-Regular.ttf
+    - family: ArchivoBlack
+      fonts:
+        - asset: assets/fonts/ArchivoBlack-Regular.ttf
     - family: Poppins
       fonts:
         - asset: assets/fonts/Poppins-Regular.ttf
