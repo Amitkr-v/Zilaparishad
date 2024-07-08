@@ -196,7 +196,7 @@ class _Page2State extends State<Page2> {
             children: [
               Container(
                 width: MediaQuery.of(context).size.width * 0.06,
-                height: 50,
+                height: 40,
                 child: Text(
                   'Serial no.',
                   style: TextStyle(
@@ -208,7 +208,7 @@ class _Page2State extends State<Page2> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width * 0.12,
-                height: 50,
+                height: 40,
                 child: Text(
                   'Financial head',
                   style: TextStyle(
@@ -220,7 +220,7 @@ class _Page2State extends State<Page2> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width * 0.1,
-                height: 50,
+                height: 40,
                 child: Text(
                   'Financial year',
                   style: TextStyle(
@@ -232,7 +232,7 @@ class _Page2State extends State<Page2> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width * 0.12,
-                height: 50,
+                height: 40,
                 child: Text(
                   'Scheme name',
                   style: TextStyle(
@@ -244,7 +244,7 @@ class _Page2State extends State<Page2> {
               ),
               Container(
                 width: MediaQuery.of(context).size.width * 0.08,
-                height: 50,
+                height: 40,
                 child: Text(
                   'Status',
                   style: TextStyle(
@@ -286,7 +286,7 @@ class _Page2State extends State<Page2> {
               borderRadius: BorderRadius.circular(8),
             ),
             child: Padding(
-              padding: const EdgeInsetsDirectional.only(start: 16.0),
+              padding: const EdgeInsetsDirectional.only(start: 16.0,top:10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -344,6 +344,8 @@ class _Page2State extends State<Page2> {
                     height: 50,
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment:MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Container(
                           decoration: BoxDecoration(
