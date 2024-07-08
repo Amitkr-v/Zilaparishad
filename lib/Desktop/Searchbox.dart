@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zilaparishad/Desktop/Page2.dart';
 
 class search1 extends StatefulWidget {
   @override
@@ -25,12 +26,12 @@ class _Search1State extends State<search1> {
     // Placeholder method for navigation
     String k = job;
     // Navigate to the profile page
-    /*Navigator.push(
+    Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => (),
+        builder: (context) => NewPage(),
       ),
-    );*/
+    );
   }
 
   @override

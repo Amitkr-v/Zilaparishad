@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:zilaparishad/Desktop/Page1/Page1.dart';
 import 'package:zilaparishad/Desktop/Page1/Page2.dart';
+import 'package:zilaparishad/Desktop/Page1/Page2test.dart';
 import 'package:zilaparishad/Desktop/navbar.dart';
 
 class Home extends StatelessWidget {
@@ -33,7 +34,7 @@ class DesktopLayout extends StatelessWidget {
       color: Colors.white,
       child: Stack(
         children: [
-          Navbar(),
+          
           Column(
             children: [
               Expanded(
@@ -59,6 +60,7 @@ class DesktopLayout extends StatelessWidget {
               ),
             ],
           ),
+          Navbar(),
         ],
       ),
     );

@@ -280,7 +280,7 @@ class _Page1State extends State<Page1> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.zero,
                           child: Image.asset(
-                            'assets/images/page1.gif',
+                            'assets/images/homep.png',
                             fit: BoxFit.cover,
                           ),
                         ),
