@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:zilaparishad/Desktop/Login/Login.dart';
-import 'package:zilaparishad/Desktop/Page1/Home.dart';
+import 'package:zilaparishad/Desktop/Page1/Page1.dart';
 import 'package:zilaparishad/Desktop/Page1/Page1Home.dart';
 import 'package:zilaparishad/Desktop/Page1/Page2test.dart';
 import 'package:zilaparishad/Desktop/Searchbox.dart';

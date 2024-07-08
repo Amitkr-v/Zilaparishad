@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:zilaparishad/Desktop/Page1/Home.dart';
+import 'package:zilaparishad/Desktop/Page1/Page1.dart';
 import 'package:zilaparishad/Desktop/Page1/Page2.dart';
 import 'package:zilaparishad/Desktop/Page1/Page2test.dart';
 import 'package:zilaparishad/Desktop/navbar.dart';
@@ -43,7 +43,7 @@ class DesktopLayout extends StatelessWidget {
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.only(start: 30),
+                        padding: const EdgeInsetsDirectional.only(start: 30,top: 50),
                         child: Page1(),
                       ),
                       SizedBox(

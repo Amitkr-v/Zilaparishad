@@ -46,7 +46,7 @@ class _Page1State extends State<Page1> {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: 'Discover and ',
+                          text: 'Empowering local ',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 40,
@@ -55,15 +55,15 @@ class _Page1State extends State<Page1> {
                           ),
                         ),
                         TextSpan(
-                          text: 'connect ',
+                          text: 'Governance ',
                           style: GoogleFonts.poppins(
                               color: Color(0xFF5824ff), // Highlight color
                               fontSize: 40,
                               letterSpacing: 1.5,
-                              fontWeight: FontWeight.w600),
+                              fontWeight: FontWeight.bold),
                         ),
                         TextSpan(
-                          text: 'with schemes',
+                          text: 'through transparent monitoring',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 40,
@@ -80,7 +80,7 @@ class _Page1State extends State<Page1> {
                   child: Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
                     child: Text(
-                      'Know the working schemes in financial head\n',
+                      'Monitor progress and ensure community development\n',
                       style: TextStyle(
                         color: Color(0xFF2E2D2C),
                         letterSpacing: 1,
