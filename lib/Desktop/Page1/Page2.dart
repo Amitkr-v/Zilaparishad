@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:zilaparishad/Desktop/Page2.dart';
+import 'package:zilaparishad/Desktop/Trackscheme.dart';
 import 'package:zilaparishad/Desktop/Searchbox.dart';
 
 class Page2 extends StatefulWidget {
@@ -286,7 +286,7 @@ class _Page2State extends State<Page2> {
               borderRadius: BorderRadius.circular(8),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
+              padding: const EdgeInsetsDirectional.only(start: 16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -335,6 +335,7 @@ class _Page2State extends State<Page2> {
                         fontSize: 20,
                         fontWeight: FontWeight.w400,
                         color: Colors.black,
+                        height: 1,
                       ),
                     ),
                   ),

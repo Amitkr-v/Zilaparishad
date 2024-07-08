@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
-import 'package:zilaparishad/Desktop/Page1/Page1.dart';
+import 'package:zilaparishad/Desktop/Page1/Home.dart';
 import 'package:zilaparishad/Desktop/Page1/Page2.dart';
 import 'package:zilaparishad/Desktop/Page1/Page2test.dart';
 import 'package:zilaparishad/Desktop/navbar.dart';
