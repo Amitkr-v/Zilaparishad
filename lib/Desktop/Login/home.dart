@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
+import 'package:zilaparishad/Desktop/Login/Login.dart';
 import 'package:zilaparishad/Desktop/Page1/Page1.dart';
 import 'package:zilaparishad/Desktop/Page1/Page2.dart';
-import 'package:zilaparishad/Desktop/Page1/Page2test.dart';
 import 'package:zilaparishad/Desktop/navbar.dart';
 
-class Home extends StatelessWidget {
+class LoginHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -30,35 +30,25 @@ class DesktopLayout extends StatelessWidget {
 
     return Container(
       width: screenWidth,
+      height: screenWidth,
       color: Colors.white,
       child: Stack(
         children: [
-          
           Column(
             children: [
               Expanded(
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsetsDirectional.only(start: 30,top: 50),
-                        child: Page1(),
-                      ),
-                      SizedBox(
-                        height: 100,
-                      ),
-                      Container(
-                        width: screenWidth,
-                      child:Page2(),
-                      )
-                    ],
-                  ),
+                child: Column(
+                  children: [
+                    Container(
+                      width: screenWidth,
+                      height: screenHeight,
+                    child:loginPage(),
+                    ),
+                  ],
                 ),
               ),
             ],
           ),
-          Navbar(),
         ],
       ),
     );

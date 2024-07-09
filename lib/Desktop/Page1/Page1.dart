@@ -170,7 +170,7 @@ class _Page1State extends State<Page1> {
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
                             child: Text(
-                              '\nUp to',
+                              '\n',
                               style: TextStyle(
                                 fontSize: 20,
                                 color: Color(0xFF1b1d51),
@@ -215,7 +215,7 @@ class _Page1State extends State<Page1> {
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
                               child: Text(
-                                '\nUp to',
+                                '\n',
                                 style: TextStyle(
                                   fontSize: 20,
                                   color: Color(0xFF1b1d51),
