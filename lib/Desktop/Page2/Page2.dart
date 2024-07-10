@@ -16,6 +16,7 @@ class _Page2State extends State<Page2> {
 
   String areaName = "Rajgir";
   List<SchemeItem> schemeItemList = [];
+  Map<int, bool> _hoverStates = {};
 
   @override
   void initState() {
@@ -27,7 +28,7 @@ class _Page2State extends State<Page2> {
   void _changeArea(String newArea) {
     setState(() {
       areaName = newArea;
-      // Replace with logic to fetch scheme items based on areaName
+
       schemeItemList = _getSchemeItemsForArea(newArea);
     });
   }
@@ -35,6 +36,64 @@ class _Page2State extends State<Page2> {
   List<SchemeItem> _getSchemeItemsForArea(String area) {
     // Simulating different scheme items based on selected area
     switch (area) {
+      case 'Rahui':
+        return [
+          SchemeItem(
+            id: '1',
+            fh: '15th F.C',
+            fy: '2020-2021',
+            sn: 'Road to school',
+            status: 'Completed',
+          ),
+          SchemeItem(
+            id: '2',
+            fh: '6th S.F.C',
+            fy: '2021-2022',
+            sn: 'Road to Watertanki',
+            status: 'Inactive',
+          ),
+        ];
+
+      case 'Harnaut':
+        return [
+          SchemeItem(
+            id: '1',
+            fh: '15th F.C',
+            fy: '2020-2021',
+            sn: 'Road to school',
+            status: 'Completed',
+          ),
+          SchemeItem(
+            id: '2',
+            fh: '6th S.F.C',
+            fy: '2021-2022',
+            sn: 'Road to Watertanki',
+            status: 'Inactive',
+          ),
+          SchemeItem(
+            id: '3',
+            fh: '5th S.F.C',
+            fy: '2017-2018',
+            sn: 'Watertanki to village',
+            status: 'Completed',
+          ),
+          SchemeItem(
+            id: '4',
+            fh: 'SWA Vitt Poshif',
+            fy: '2020-2021',
+            sn: 'Village to school',
+            status: 'Inprogress',
+          ),
+          SchemeItem(
+            id: '5',
+            fh: 'SWA Vitt Poshif',
+            fy: '2020-2021',
+            sn: 'Village to school',
+            status: 'Inprogress',
+          ),
+
+          // Add more schemes as needed
+        ];
       case 'Rajgir':
         return [
           SchemeItem(
@@ -241,23 +300,31 @@ class _Page2State extends State<Page2> {
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   GestureDetector(
-                    onTap: () {
-                      showDialog(
-                        context: context,
-                        builder: (BuildContext context) => Dialogue(
-                          areaName: areaName,
-                          changeArea: _changeArea,
+                    child: MouseRegion(
+                      cursor: SystemMouseCursors.click,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: InkWell(
+                          onTap: () {
+                            showDialog(
+                              context: context,
+                              builder: (BuildContext context) => Dialogue(
+                                areaName: areaName,
+                                changeArea: _changeArea,
+                              ),
+                            );
+                          },
+                          child: Text(
+                            areaName,
+                            style: TextStyle(
+                              fontFamily: 'Poppins',
+                              color: Color(0xFF000000),
+                              fontSize: 28,
+                              letterSpacing: 0,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
                         ),
-                      );
-                    },
-                    child: Text(
-                      areaName,
-                      style: TextStyle(
-                        fontFamily: 'Poppins',
-                        color: Color(0xFF000000),
-                        fontSize: 28,
-                        letterSpacing: 0,
-                        fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
@@ -272,6 +339,11 @@ class _Page2State extends State<Page2> {
                       fontWeight: FontWeight.w800,
                     ),
                   ),
+                  Icon(
+                    Icons.chevron_right,
+                    color: Color.fromARGB(255, 107, 107, 107),
+                    size: 35,
+                  )
                 ],
               ),
             ),
@@ -295,7 +367,6 @@ class _Page2State extends State<Page2> {
           rowHeader(context),
           ListView.builder(
             shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
             itemCount: schemeItemList.length,
             itemBuilder: (context, index) {
               return rowCell(
@@ -305,7 +376,7 @@ class _Page2State extends State<Page2> {
                 schemeItemList[index].fy,
                 schemeItemList[index].sn,
                 schemeItemList[index].status,
-                
+                _hoverStates[index] ?? false,
               );
             },
           ),
@@ -328,8 +399,7 @@ class _Page2State extends State<Page2> {
         ),
       ),
       child: Padding(
-        padding:
-            const EdgeInsetsDirectional.only(start: 0.0, top: 16, end: 0.0),
+        padding: EdgeInsetsDirectional.only(start: 0.0, top: 16, end: 0.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -346,13 +416,14 @@ class _Page2State extends State<Page2> {
     );
   }
 
-  GestureDetector rowCell(
+  Widget rowCell(
     BuildContext context,
     String serial,
     String financial_head,
     String fin_year,
     String Scheme_name,
     String status,
+    bool isHovered,
   ) {
     double screenWidth = MediaQuery.of(context).size.width;
 
@@ -365,47 +436,71 @@ class _Page2State extends State<Page2> {
           MaterialPageRoute(builder: (context) => NewPage()),
         );
       },
-      child: Container(
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(2),
-        ),
-        child: Padding(
-          padding: const EdgeInsetsDirectional.only(
-              start: 0, top: 2, end: 2, bottom: 2),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              cellBoxContainer(context, screenWidth * 0.1, serial),
-              cellBoxContainer(context, screenWidth * 0.15, financial_head),
-              cellBoxContainer(context, screenWidth * 0.15, fin_year),
-              cellBoxContainer(context, screenWidth * 0.25, Scheme_name),
-              Padding(
-                padding: EdgeInsetsDirectional.only(start: 2),
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.15 - 2,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(2),
-                    color: _getColorFromStatus(status),
-                  ),
-                  child: Center(
-                    child: Text(
-                      status,
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black,
+
+      // Use a separate GestureDetector inside MouseRegion for onTap behavior
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        onEnter: (_) {
+          setState(() {
+            _hoverStates[serial.hashCode] = true;
+          });
+        },
+        onExit: (_) {
+          setState(() {
+            _hoverStates[serial.hashCode] = false;
+          });
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: _hoverStates[serial.hashCode] ?? false
+                ? Color.fromARGB(255, 146, 146, 146)
+                : Colors.transparent,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Padding(
+            padding: EdgeInsetsDirectional.only(
+              start: 0,
+              top: 2,
+              end: 2,
+              bottom: 2,
+            ),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                cellBoxContainer(context, screenWidth * 0.1, serial),
+                cellBoxContainer(context, screenWidth * 0.15, financial_head),
+                cellBoxContainer(context, screenWidth * 0.15, fin_year),
+                cellBoxContainer(context, screenWidth * 0.25, Scheme_name),
+                Padding(
+                  padding: EdgeInsetsDirectional.only(start: 2),
+                  child: Container(
+                    width: MediaQuery.of(context).size.width * 0.15 - 2,
+                    height: 40,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(2),
+                      color: _getColorFromStatus(status),
+                    ),
+                    child: Center(
+                      child: Text(
+                        status,
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black,
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
+
+      // Handle hover effect using the onEnter and onExit callbacks
     );
   }
 

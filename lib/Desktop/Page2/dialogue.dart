@@ -59,30 +59,35 @@ class Dialogue extends StatelessWidget {
                 itemBuilder: (context, index) {
                   final area = zilaParishadAreas[index];
                   return GestureDetector(
-                    onTap: () {
-                      changeArea(area); // Change areaName
-                      Navigator.of(context).pop(); // Close dialog
-                    },
-                    child: AnimatedContainer(
-                      duration: Duration(milliseconds: 500),
-                      decoration: BoxDecoration(
-                        color: areaName == area
-                            ? Colors.grey[300]
-                            : Colors.transparent,
-                        border: Border.all(
-                          color: areaName == area
-                              ? Colors.blue
-                              : Colors.transparent,
-                          width: 2,
-                        ),
-                      ),
-                      child: ListTile(
-                        title: Text(
-                          area,
-                          style: TextStyle(
-                            fontFamily: 'Poppins',
-                            fontSize: 20,
-                            fontWeight: FontWeight.w500,
+                    child: MouseRegion(
+                      
+                      child: InkWell(
+                        onTap: () {
+                          changeArea(area); // Change areaName
+                          Navigator.of(context).pop(); // Close dialog
+                        },
+                        child: AnimatedContainer(
+                          duration: Duration(milliseconds: 500),
+                          decoration: BoxDecoration(
+                            color: areaName == area
+                                ? Colors.grey[300]
+                                : Colors.transparent,
+                            border: Border.all(
+                              color: areaName == area
+                                  ? Colors.blue
+                                  : Colors.transparent,
+                              width: 2,
+                            ),
+                          ),
+                          child: ListTile(
+                            title: Text(
+                              area,
+                              style: TextStyle(
+                                fontFamily: 'Poppins',
+                                fontSize: 20,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
                           ),
                         ),
                       ),

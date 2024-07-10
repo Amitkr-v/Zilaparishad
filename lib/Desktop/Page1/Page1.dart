@@ -13,15 +13,16 @@ class _Page1State extends State<Page1> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth=MediaQuery.of(context).size.width;
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(90, 100, 30, 0),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Expanded(
-            flex: 1,
+          Flexible(
+            flex: 10,
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -46,7 +47,7 @@ class _Page1State extends State<Page1> {
                     TextSpan(
                       children: [
                         TextSpan(
-                          text: 'Empowering local ',
+                          text: 'Empowering ',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 40,
@@ -55,7 +56,7 @@ class _Page1State extends State<Page1> {
                           ),
                         ),
                         TextSpan(
-                          text: 'Governance ',
+                          text: 'Nalanda ',
                           style: GoogleFonts.poppins(
                               color: Color(0xFF5824ff), // Highlight color
                               fontSize: 40,
@@ -63,7 +64,7 @@ class _Page1State extends State<Page1> {
                               fontWeight: FontWeight.bold),
                         ),
                         TextSpan(
-                          text: 'through transparent monitoring',
+                          text: 'Zila Parishad through transparent monitoring',
                           style: TextStyle(
                             color: Colors.black,
                             fontSize: 40,
@@ -104,56 +105,61 @@ class _Page1State extends State<Page1> {
                       });
                     },
                     child: GestureDetector(
-                      onTap: () {
-                        _showDownloadDialog(context);
-                      },
-                      child: Container(
-                        width: 215,
-                        decoration: BoxDecoration(
-                          color: isDownloadHovered
-                              ? Color.fromARGB(255, 252, 110, 39)
-                              : Color(0xFFff5700),
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 2,
-                              color: Color.fromARGB(51, 237, 236, 236),
-                              offset: Offset(0, 2),
-                              spreadRadius: 2,
+                      child: MouseRegion(
+                        cursor: SystemMouseCursors.click,
+                        child: InkWell(
+                          onTap: () {
+                            _showDownloadDialog(context);
+                          },
+                          child: Container(
+                            width: 215,
+                            decoration: BoxDecoration(
+                              color: isDownloadHovered
+                                  ? Color.fromARGB(255, 252, 110, 39)
+                                  : Color(0xFFff5700),
+                              boxShadow: [
+                                BoxShadow(
+                                  blurRadius: 2,
+                                  color: Color.fromARGB(51, 237, 236, 236),
+                                  offset: Offset(0, 2),
+                                  spreadRadius: 2,
+                                ),
+                              ],
+                              borderRadius: BorderRadius.circular(10),
+                              shape: BoxShape.rectangle,
                             ),
-                          ],
-                          borderRadius: BorderRadius.circular(10),
-                          shape: BoxShape.rectangle,
-                        ),
-                        child: Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(10, 10, 10, 10),
-                          child: Row(
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    10, 15, 5, 15),
-                                child: Text(
-                                  'Download app',
-                                  textAlign: TextAlign.center,
-                                  style: TextStyle(
-                                    color: Color(0xFFFFFFFF),
-                                    letterSpacing: 0,
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.w400,
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10, 10, 10, 10),
+                              child: Row(
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10, 15, 5, 15),
+                                    child: Text(
+                                      'Download app',
+                                      textAlign: TextAlign.center,
+                                      style: TextStyle(
+                                        color: Color(0xFFFFFFFF),
+                                        letterSpacing: 0,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w400,
+                                      ),
+                                    ),
                                   ),
-                                ),
+                                  AnimatedContainer(
+                                    duration: Duration(milliseconds: 300),
+                                    margin: EdgeInsets.only(
+                                        left: isDownloadHovered ? 10 : 0),
+                                    child: Icon(
+                                      Icons.chevron_right,
+                                      color: Color(0xFFFFFFFF),
+                                      size: 20,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              AnimatedContainer(
-                                duration: Duration(milliseconds: 300),
-                                margin: EdgeInsets.only(
-                                    left: isDownloadHovered ? 10 : 0),
-                                child: Icon(
-                                  Icons.chevron_right,
-                                  color: Color(0xFFFFFFFF),
-                                  size: 20,
-                                ),
-                              ),
-                            ],
+                            ),
                           ),
                         ),
                       ),
@@ -258,30 +264,28 @@ class _Page1State extends State<Page1> {
               ],
             ),
           ),
-          Expanded(
-            flex: 1,
+          Flexible(
+            flex: 9,
             child: Column(children: [
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
+                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                       child: Container(
                         
-                        width: MediaQuery.sizeOf(context).width * 0.40,
-                        height: MediaQuery.of(context).size.height*0.6,
-                        decoration: BoxDecoration(
-                          
-                        ),
+                        width: screenWidth * 0.38,
+                        height: MediaQuery.of(context).size.height * 0.6,
+                      
                         child: ClipRRect(
                           borderRadius: BorderRadius.zero,
                           child: Image.asset(
-                            'assets/images/homep.png',
-                            fit: BoxFit.cover,
+                            'assets/images/Home.png',
+                            fit: BoxFit.contain,
                           ),
                         ),
                       ),

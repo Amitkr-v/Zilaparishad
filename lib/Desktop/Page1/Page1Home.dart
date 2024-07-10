@@ -42,7 +42,7 @@ class DesktopLayout extends StatelessWidget {
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.only(start: 30,top: 50),
+                        padding: const EdgeInsetsDirectional.only(start: 30,top: 50,end: 30),
                         child: Page1(),
                       ),
                       SizedBox(
