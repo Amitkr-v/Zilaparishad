@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:responsive_builder/responsive_builder.dart';
 import 'package:zilaparishad/Desktop/Login/Login.dart';
 import 'package:zilaparishad/Desktop/Page1/Page1.dart';
-import 'package:zilaparishad/Desktop/Page1/Page2.dart';
+import 'package:zilaparishad/Desktop/Page2/Page2.dart';
 import 'package:zilaparishad/Desktop/navbar.dart';
 
 class LoginHome extends StatelessWidget {
