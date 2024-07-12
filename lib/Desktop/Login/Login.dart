@@ -265,21 +265,16 @@ class _loginPageState extends State<loginPage>
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Icon(
-                            Icons.mail_outline,
-                            color: Color(0xFF121212),
-                            size: 24,
-                          ),
                           Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                             child: Text(
-                              'contact@nsappsstudio.in',
+                              'Developed by Ns apps innovation',
                               style: TextStyle(
                                 fontFamily: 'Poppins',
                                 color: Color(0xFF121212),
                                 letterSpacing: 0,
-                                fontWeight: FontWeight.w600,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           ),
