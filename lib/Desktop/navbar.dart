@@ -45,8 +45,6 @@ class _NavbarState extends State<Navbar> {
                     ],
                   ),
                 ),
-                
-                
               ],
             ),
             Padding(

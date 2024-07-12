@@ -61,7 +61,7 @@ class _Page1State extends State<Page1> {
                               color: Color(0xFF5824ff), // Highlight color
                               fontSize: 40,
                               letterSpacing: 1.5,
-                              fontWeight: FontWeight.bold),
+                              fontWeight: FontWeight.w600),
                         ),
                         TextSpan(
                           text: 'Zila Parishad through transparent monitoring',

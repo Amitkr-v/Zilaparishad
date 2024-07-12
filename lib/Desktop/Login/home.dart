@@ -4,6 +4,7 @@ import 'package:zilaparishad/Desktop/Login/Login.dart';
 import 'package:zilaparishad/Desktop/Page1/Page1.dart';
 import 'package:zilaparishad/Desktop/Page2/Page2.dart';
 import 'package:zilaparishad/Desktop/navbar.dart';
+import 'package:zilaparishad/Mobile/mlogin.dart';
 
 class LoginHome extends StatelessWidget {
   @override
@@ -42,7 +43,7 @@ class DesktopLayout extends StatelessWidget {
                     Container(
                       width: screenWidth,
                       height: screenHeight,
-                    child:loginPage(),
+                      child: loginPage(),
                     ),
                   ],
                 ),
@@ -67,7 +68,11 @@ class TabletLayout extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
-                  children: [],
+                  children: [
+                    Container(
+                      child: mloginPage(),
+                    ),
+                  ],
                 ),
               ),
             ),
@@ -90,7 +95,11 @@ class Mobilelayout extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
-                  children: [],
+                  children: [
+                    Container(
+                      child: mloginPage(),
+                    ),
+                  ],
                 ),
               ),
             ),
