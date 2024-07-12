@@ -4,6 +4,8 @@ import 'package:zilaparishad/Desktop/Page1/Page1.dart';
 import 'package:zilaparishad/Desktop/Page2/Page2.dart';
 import 'package:zilaparishad/Desktop/Page2/Page2test.dart';
 import 'package:zilaparishad/Desktop/navbar.dart';
+import 'package:zilaparishad/Mobile/Page1.dart';
+import 'package:zilaparishad/Mobile/mnavbar.dart';
 
 class Home extends StatelessWidget {
   @override
@@ -33,7 +35,6 @@ class DesktopLayout extends StatelessWidget {
       color: Colors.white,
       child: Stack(
         children: [
-          
           Column(
             children: [
               Expanded(
@@ -42,7 +43,8 @@ class DesktopLayout extends StatelessWidget {
                   child: Column(
                     children: [
                       Padding(
-                        padding: const EdgeInsetsDirectional.only(start: 30,top: 50,end: 30),
+                        padding: const EdgeInsetsDirectional.only(
+                            start: 30, top: 50, end: 30),
                         child: Page1(),
                       ),
                       SizedBox(
@@ -50,7 +52,7 @@ class DesktopLayout extends StatelessWidget {
                       ),
                       Container(
                         width: screenWidth,
-                      child:Page2(),
+                        child: Page2(),
                       )
                     ],
                   ),
@@ -77,12 +79,19 @@ class TabletLayout extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
-                  children: [],
+                  children: [
+                    Padding(
+                      padding: const EdgeInsetsDirectional.only(
+                          start: 30, top: 50, end: 30),
+                      child: mPage1(),
+                    ),
+                  ],
                 ),
               ),
             ),
           ],
         ),
+        mNavbar(),
       ]),
     );
   }
@@ -100,12 +109,15 @@ class Mobilelayout extends StatelessWidget {
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
-                  children: [],
+                  children: [
+                    mPage1(),
+                  ],
                 ),
               ),
             ),
           ],
         ),
+        mNavbar(),
       ]),
     );
   }

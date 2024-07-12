@@ -1,29 +1,31 @@
 import 'package:flutter/material.dart';
 
-class Navbar extends StatefulWidget {
+class mNavbar extends StatefulWidget {
   @override
-  _NavbarState createState() => _NavbarState();
+  _mNavbarState createState() => _mNavbarState();
 }
 
-class _NavbarState extends State<Navbar> {
+class _mNavbarState extends State<mNavbar> {
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(90, 20, 0, 20),
+        padding: EdgeInsetsDirectional.fromSTEB(20, 20, 10, 0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.only(end: 10),
+                  padding: const EdgeInsetsDirectional.only(end: 6),
                   child: Container(
-                    width: 50,
-                    height: 50,
+                    width: 30,
+                    height: 30,
                     clipBehavior: Clip.antiAlias,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
@@ -38,7 +40,7 @@ class _NavbarState extends State<Navbar> {
                   text: TextSpan(
                     text: 'Zila parishad',
                     style: TextStyle(
-                      fontSize: 25,
+                      fontSize: 20,
                       letterSpacing: 0,
                       fontWeight: FontWeight.w900,
                       color: Colors.black,
@@ -59,19 +61,24 @@ class _NavbarState extends State<Navbar> {
               ],
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.only(end: 80),
+              padding: const EdgeInsetsDirectional.only(end: 10),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Icon(
-                    Icons.account_circle,
-                    size: 40,
-                    color: Color.fromARGB(255, 166, 166, 166),
+                  Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                    ),
+                    child: Icon(
+                      Icons.account_circle,
+                      size: 40,
+                      color: Color.fromARGB(255, 166, 166, 166),
+                    ),
                   ),
                   Padding(
-                    padding: const EdgeInsetsDirectional.only(start: 10),
+                    padding: const EdgeInsetsDirectional.only(start: 6),
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,14 +87,14 @@ class _NavbarState extends State<Navbar> {
                         Text(
                           'Welcome,',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 12,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
                         Text(
-                          'Demo12',
+                          'Demo',
                           style: TextStyle(
-                            fontSize: 14,
+                            fontSize: 12,
                             fontWeight: FontWeight.w600,
                             color: Color(0xFF845EF2),
                           ),
