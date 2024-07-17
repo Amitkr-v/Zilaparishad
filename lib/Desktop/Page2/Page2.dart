@@ -429,15 +429,11 @@ class _Page2State extends State<Page2> {
 
     return GestureDetector(
       onTap: () {
-        // Handle row cell tap if needed
-        // Example: Navigate to another page
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => NewPage()),
         );
       },
-
-      // Use a separate GestureDetector inside MouseRegion for onTap behavior
       child: MouseRegion(
         cursor: SystemMouseCursors.click,
         onEnter: (_) {

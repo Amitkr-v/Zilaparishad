@@ -439,45 +439,66 @@ class _mPage2State extends State<mPage2> {
           MaterialPageRoute(builder: (context) => NewPage()),
         );
       },
-      child: Container(
-        decoration: BoxDecoration(),
-        child: Padding(
-          padding: EdgeInsetsDirectional.only(
-            start: 0,
-            top: 2,
-            end: 2,
-            bottom: 2,
+      child: MouseRegion(
+        cursor: SystemMouseCursors.click,
+        onEnter: (_) {
+          setState(() {
+            _hoverStates[serial.hashCode] = true;
+          });
+        },
+        onExit: (_) {
+          setState(() {
+            _hoverStates[serial.hashCode] = false;
+          });
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            color: _hoverStates[serial.hashCode] ?? false
+                ? Color.fromARGB(255, 146, 146, 146)
+                : Colors.transparent,
+            borderRadius: BorderRadius.circular(8),
           ),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              cellBoxContainer(context, screenWidth * 0.15, serial),
-              mobileSecondCellContainer(context, screenWidth * 0.55,
-                  Scheme_name + ",", financial_head + ", " + fin_year),
-              Padding(
-                padding: EdgeInsetsDirectional.only(start: 2),
-                child: Container(
-                  width: MediaQuery.of(context).size.width * 0.2 - 2,
-                  height: 40,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(2),
-                    color: _getColorFromStatus(status),
-                  ),
-                  child: Center(
-                    child: Text(
-                      status,
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.w400,
-                        color: Colors.black,
+          child: Container(
+            decoration: BoxDecoration(),
+            child: Padding(
+              padding: EdgeInsetsDirectional.only(
+                start: 0,
+                top: 2,
+                end: 2,
+                bottom: 2,
+              ),
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  cellBoxContainer(context, screenWidth * 0.15, serial),
+                  mobileSecondCellContainer(context, screenWidth * 0.55,
+                      Scheme_name + ",", financial_head + ", " + fin_year),
+                  Padding(
+                    padding: EdgeInsetsDirectional.only(start: 2),
+                    child: Container(
+                      width: MediaQuery.of(context).size.width * 0.2 - 2,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(2),
+                        color: _getColorFromStatus(status),
+                      ),
+                      child: Center(
+                        child: Text(
+                          status,
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.black,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       ),
@@ -510,14 +531,14 @@ class _mPage2State extends State<mPage2> {
         constraints: BoxConstraints(minHeight: 40),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(2),
-          color: Colors.white, // Change color on hover
+          color: Colors.white,
         ),
         child: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(24, 4, 8, 4),
           child: Text(
             text + "\n" + text2,
             style: TextStyle(
-              fontSize: 10,
+              fontSize: 12,
               fontWeight: FontWeight.w400,
               color: Color(0xFF131842),
             ),
@@ -543,7 +564,7 @@ class _mPage2State extends State<mPage2> {
           child: Text(
             text,
             style: TextStyle(
-              fontSize: 10,
+              fontSize: 12,
               fontWeight: FontWeight.w400,
               color: Color(0xFF131842),
             ),
