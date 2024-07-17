@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         fontFamily: GoogleFonts.poppins().fontFamily),
       initialRoute: '/',
       routes: {
-        '/': (context) => Home(),
+        '/': (context) => LoginHome(),
       
       },
     );

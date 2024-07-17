@@ -53,19 +53,13 @@ class _loginPageState extends State<loginPage>
                                 color: Colors.white,
                                 shape: BoxShape.circle,
                               ),
-                              child: Container(
-                                width: 120,
-                                height: 120,
-                                clipBehavior: Clip.antiAlias,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                ),
+                              
                                 child: Image.asset(
                                   'assets/images/zplogo.png',
                                   fit: BoxFit.cover,
                                 ),
                               ),
-                            ),
+                            
                             Padding(
                               padding:
                                   EdgeInsetsDirectional.fromSTEB(16, 0, 0, 0),
@@ -269,7 +263,7 @@ class _loginPageState extends State<loginPage>
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(10, 0, 0, 0),
                             child: Text(
-                              'Developed by Ns apps innovation',
+                              'Developed by NS apps innovation',
                               style: TextStyle(
                                 fontFamily: 'Poppins',
                                 color: Color(0xFF121212),

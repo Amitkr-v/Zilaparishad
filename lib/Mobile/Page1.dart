@@ -41,27 +41,31 @@ class _mPage1State extends State<mPage1> {
                   TextSpan(
                     text: 'Empowering ',
                     style: TextStyle(
-                      color: Colors.black,
+                      fontFamily: 'Comfortaa',
+                      color: Color(0xFF131842),
                       fontSize: 25,
-                      letterSpacing: 1.5,
-                      fontWeight: FontWeight.w600,
+                      letterSpacing: 1,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                   TextSpan(
                     text: 'Nalanda ',
-                    style: GoogleFonts.poppins(
-                        color: Color(0xFF5824ff), // Highlight color
+                    style: TextStyle(
+                        color: Color.fromARGB(
+                            255, 252, 110, 39), // Highlight color
                         fontSize: 25,
-                        letterSpacing: 1.5,
+                        fontFamily: 'Comfortaa',
+                        letterSpacing: 1,
                         fontWeight: FontWeight.bold),
                   ),
                   TextSpan(
                     text: 'Zila Parishad through transparent monitoring',
                     style: TextStyle(
-                      color: Colors.black,
+                      color: Color(0xFF131842),
+                      fontFamily: 'Comfortaa',
                       fontSize: 25,
-                      letterSpacing: 1.5,
-                      fontWeight: FontWeight.w600,
+                      letterSpacing: 1,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
                 ],
@@ -71,16 +75,15 @@ class _mPage1State extends State<mPage1> {
           Container(
             decoration: BoxDecoration(),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+              padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
               child: Text(
                 'Monitor progress and ensure community development\n',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  color: Color(0xFF2E2D2C),
+                  color: Color(0xFF131842),
                   letterSpacing: 1,
                   fontWeight: FontWeight.w500,
                   fontSize: 18,
-                  
                 ),
               ),
             ),
@@ -90,7 +93,6 @@ class _mPage1State extends State<mPage1> {
             child: MouseRegion(
               child: GestureDetector(
                 child: MouseRegion(
-                  cursor: SystemMouseCursors.click,
                   child: InkWell(
                     onTap: () {
                       _showDownloadDialog(context);
@@ -243,11 +245,11 @@ class _mPage1State extends State<mPage1> {
                 Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                   child: Container(
-                    width: screenWidth * 0.8,
+                    width: screenWidth * 0.85,
                     child: ClipRRect(
                       borderRadius: BorderRadius.zero,
                       child: Image.asset(
-                        'assets/images/Home.png',
+                        'assets/images/mgif.gif',
                         fit: BoxFit.contain,
                       ),
                     ),

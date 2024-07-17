@@ -3,8 +3,9 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:zilaparishad/Desktop/Page1/Page1.dart';
 import 'package:zilaparishad/Desktop/Page2/Page2.dart';
 import 'package:zilaparishad/Desktop/Page2/Page2test.dart';
-import 'package:zilaparishad/Desktop/navbar.dart';
+import 'package:zilaparishad/Desktop/Navbar/navbar.dart';
 import 'package:zilaparishad/Mobile/Page1.dart';
+import 'package:zilaparishad/Mobile/Page2.dart';
 import 'package:zilaparishad/Mobile/mnavbar.dart';
 
 class Home extends StatelessWidget {
@@ -85,6 +86,8 @@ class TabletLayout extends StatelessWidget {
                           start: 30, top: 50, end: 30),
                       child: mPage1(),
                     ),
+                     mPage2(),
+                    
                   ],
                 ),
               ),
@@ -111,6 +114,10 @@ class Mobilelayout extends StatelessWidget {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     mPage1(),
+
+                   
+                       mPage2(),
+                    
                   ],
                 ),
               ),

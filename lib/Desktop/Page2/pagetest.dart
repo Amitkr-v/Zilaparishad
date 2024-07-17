@@ -3,14 +3,14 @@ import 'package:zilaparishad/Desktop/Searchbox.dart';
 import 'package:zilaparishad/Desktop/Trackscheme.dart';
 import 'package:zilaparishad/Model.dart';
 
-class Page2 extends StatefulWidget {
-  const Page2({Key? key}) : super(key: key);
+class Page21 extends StatefulWidget {
+  const Page21({Key? key}) : super(key: key);
 
   @override
-  State<Page2> createState() => _Page2State();
+  State<Page21> createState() => _Page2State();
 }
 
-class _Page2State extends State<Page2> {
+class _Page2State extends State<Page21> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   Map<String, bool> _hoverStates = {};

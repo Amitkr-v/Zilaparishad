@@ -102,7 +102,7 @@ class _Search1State extends State<search1> {
                           width: 40,
                           height: 40,
                           decoration: BoxDecoration(
-                            color: Color(0xFF845EF2),
+                            color: Color(0xFF131842),
                             shape: BoxShape.circle,
                           ),
                           child: Icon(

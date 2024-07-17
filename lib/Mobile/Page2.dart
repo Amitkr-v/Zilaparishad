@@ -4,16 +4,15 @@ import 'package:zilaparishad/Desktop/Searchbox.dart';
 import 'package:zilaparishad/Desktop/Trackscheme.dart';
 import 'package:zilaparishad/Model.dart';
 
-class Page2 extends StatefulWidget {
-  const Page2({Key? key}) : super(key: key);
+class mPage2 extends StatefulWidget {
+  const mPage2({Key? key}) : super(key: key);
 
   @override
-  State<Page2> createState() => _Page2State();
+  State<mPage2> createState() => _mPage2State();
 }
 
-class _Page2State extends State<Page2> {
+class _mPage2State extends State<mPage2> {
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
   String areaName = "Rajgir";
   List<SchemeItem> schemeItemList = [];
   Map<int, bool> _hoverStates = {};
@@ -285,17 +284,21 @@ class _Page2State extends State<Page2> {
               style: TextStyle(
                 fontFamily: 'Poppins',
                 color: Color(0xFF131842),
-                fontSize: 35,
+                fontSize: 25,
                 letterSpacing: 0,
                 fontWeight: FontWeight.w600,
               ),
             ),
             SizedBox(height: 20),
-            search1(), // Replace with your search widget
-            SizedBox(height: 80),
+
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(
-                  screenWidth * 0.1 + 16, 0, 0, 20),
+              padding: const EdgeInsetsDirectional.only(start: 20.0, end: 20),
+              child: search1(),
+            ), // Replace with your search widget
+            SizedBox(height: 30),
+            Padding(
+              padding:
+                  EdgeInsetsDirectional.fromSTEB(screenWidth * 0.05, 0, 0, 20),
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
@@ -360,12 +363,13 @@ class _Page2State extends State<Page2> {
 
   Container tableView(double screenWidth, BuildContext context) {
     return Container(
-      width: screenWidth * 0.8 + 12,
+      width: screenWidth * 0.95,
       child: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
           rowHeader(context),
           ListView.builder(
+            physics: NeverScrollableScrollPhysics(),
             shrinkWrap: true,
             itemCount: schemeItemList.length,
             itemBuilder: (context, index) {
@@ -400,17 +404,18 @@ class _Page2State extends State<Page2> {
       ),
       child: Padding(
         padding: EdgeInsetsDirectional.only(start: 0.0, top: 16, end: 0.0),
-        child: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            headerCell(context, screenWidth * 0.1, "Serial No."),
-            headerCell(context, screenWidth * 0.15, "Financial Head"),
-            headerCell(context, screenWidth * 0.15, "Financial Year"),
-            headerCell(context, screenWidth * 0.25, "Scheme Name & Details"),
-            headerCell(context, screenWidth * 0.15, "Status"),
-          ],
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              headerCell(context, screenWidth * 0.15, "Sl."),
+              headerCell(context, screenWidth * 0.55, "Scheme details"),
+              headerCell(context, screenWidth * 0.2 - 2, "Status"),
+            ],
+          ),
         ),
       ),
     );
@@ -429,78 +434,53 @@ class _Page2State extends State<Page2> {
 
     return GestureDetector(
       onTap: () {
-        // Handle row cell tap if needed
-        // Example: Navigate to another page
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => NewPage()),
         );
       },
-
-      // Use a separate GestureDetector inside MouseRegion for onTap behavior
-      child: MouseRegion(
-        cursor: SystemMouseCursors.click,
-        onEnter: (_) {
-          setState(() {
-            _hoverStates[serial.hashCode] = true;
-          });
-        },
-        onExit: (_) {
-          setState(() {
-            _hoverStates[serial.hashCode] = false;
-          });
-        },
-        child: Container(
-          decoration: BoxDecoration(
-            color: _hoverStates[serial.hashCode] ?? false
-                ? Color.fromARGB(255, 146, 146, 146)
-                : Colors.transparent,
-            borderRadius: BorderRadius.circular(8),
+      child: Container(
+        decoration: BoxDecoration(),
+        child: Padding(
+          padding: EdgeInsetsDirectional.only(
+            start: 0,
+            top: 2,
+            end: 2,
+            bottom: 2,
           ),
-          child: Padding(
-            padding: EdgeInsetsDirectional.only(
-              start: 0,
-              top: 2,
-              end: 2,
-              bottom: 2,
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                cellBoxContainer(context, screenWidth * 0.1, serial),
-                cellBoxContainer(context, screenWidth * 0.15, financial_head),
-                cellBoxContainer(context, screenWidth * 0.15, fin_year),
-                cellBoxContainer(context, screenWidth * 0.25, Scheme_name),
-                Padding(
-                  padding: EdgeInsetsDirectional.only(start: 2),
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.15 - 2,
-                    height: 40,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(2),
-                      color: _getColorFromStatus(status),
-                    ),
-                    child: Center(
-                      child: Text(
-                        status,
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.black,
-                        ),
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              cellBoxContainer(context, screenWidth * 0.15, serial),
+              mobileSecondCellContainer(context, screenWidth * 0.55,
+                  Scheme_name + ",", financial_head + ", " + fin_year),
+              Padding(
+                padding: EdgeInsetsDirectional.only(start: 2),
+                child: Container(
+                  width: MediaQuery.of(context).size.width * 0.2 - 2,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(2),
+                    color: _getColorFromStatus(status),
+                  ),
+                  child: Center(
+                    child: Text(
+                      status,
+                      style: TextStyle(
+                        fontSize: 10,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black,
                       ),
                     ),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
-
-      // Handle hover effect using the onEnter and onExit callbacks
     );
   }
 
@@ -512,9 +492,35 @@ class _Page2State extends State<Page2> {
         child: Text(
           text,
           style: TextStyle(
-            fontSize: 20,
+            fontSize: 12,
             fontWeight: FontWeight.w400,
             color: Color(0xFFa5a6ac),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Padding mobileSecondCellContainer(
+      BuildContext context, double cellWidth, String text, String text2) {
+    return Padding(
+      padding: EdgeInsets.only(left: 2),
+      child: Container(
+        width: cellWidth,
+        constraints: BoxConstraints(minHeight: 40),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(2),
+          color: Colors.white, // Change color on hover
+        ),
+        child: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(24, 4, 8, 4),
+          child: Text(
+            text + "\n" + text2,
+            style: TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.w400,
+              color: Color(0xFF131842),
+            ),
           ),
         ),
       ),
@@ -537,7 +543,7 @@ class _Page2State extends State<Page2> {
           child: Text(
             text,
             style: TextStyle(
-              fontSize: 18,
+              fontSize: 10,
               fontWeight: FontWeight.w400,
               color: Color(0xFF131842),
             ),

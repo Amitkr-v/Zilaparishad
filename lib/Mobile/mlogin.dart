@@ -164,7 +164,7 @@ class _loginPageState extends State<mloginPage>
                 ),
               ),
               Text(
-                'Ns apps innovation',
+                'NS apps innovation',
                 style: TextStyle(
                   fontFamily: 'Poppins',
                   color: Color.fromARGB(255, 101, 101, 101),

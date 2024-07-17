@@ -2,32 +2,30 @@ import 'package:flutter/material.dart';
 import 'package:zilaparishad/Desktop/Login/home.dart';
 import 'package:zilaparishad/Desktop/Navbar/logout.dart';
 
-class mNavbar extends StatefulWidget {
+class Navbar extends StatefulWidget {
   @override
-  _mNavbarState createState() => _mNavbarState();
+  _NavbarState createState() => _NavbarState();
 }
 
-class _mNavbarState extends State<mNavbar> {
+class _NavbarState extends State<Navbar> {
   @override
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(20, 20, 10, 0),
+        padding: EdgeInsetsDirectional.fromSTEB(90, 20, 0, 20),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Padding(
-                  padding: const EdgeInsetsDirectional.only(end: 6),
+                  padding: const EdgeInsetsDirectional.only(end: 10),
                   child: Container(
-                    width: 30,
-                    height: 30,
+                    width: 50,
+                    height: 50,
                     clipBehavior: Clip.antiAlias,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
@@ -42,7 +40,7 @@ class _mNavbarState extends State<mNavbar> {
                   text: TextSpan(
                     text: 'Zila parishad',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 25,
                       letterSpacing: 0,
                       fontWeight: FontWeight.w900,
                       color: Colors.black,
@@ -63,13 +61,13 @@ class _mNavbarState extends State<mNavbar> {
               ],
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.only(end: 10),
+              padding: const EdgeInsetsDirectional.only(end: 80),
               child: InkWell(
                 onTap: () {
                   showDialog(
-                    context: context,
-                    builder: (BuildContext context) => logout(),
-                  );
+                          context: context,
+                          builder: (BuildContext context) => logout(),
+                        );
                 },
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
@@ -77,6 +75,8 @@ class _mNavbarState extends State<mNavbar> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
+                      width: 40,
+                      height: 40,
                       decoration: BoxDecoration(
                         shape: BoxShape.circle,
                       ),
@@ -87,7 +87,7 @@ class _mNavbarState extends State<mNavbar> {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsetsDirectional.only(start: 6),
+                      padding: const EdgeInsetsDirectional.only(start: 10),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -96,23 +96,23 @@ class _mNavbarState extends State<mNavbar> {
                           Text(
                             'Welcome,',
                             style: TextStyle(
-                              fontSize: 12,
+                              fontSize: 14,
                               fontWeight: FontWeight.w600,
                             ),
                           ),
                           Row(
                             children: [
                               Text(
-                                'Demo',
+                                'Demo12',
                                 style: TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 14,
                                   fontWeight: FontWeight.w600,
                                   color: Color(0xFF845EF2),
                                 ),
                               ),
                               Padding(
                                 padding: const EdgeInsetsDirectional.only(
-                                    start: 5.0),
+                                    start: 8.0),
                                 child: Icon(
                                   Icons.logout,
                                   size: 20,
@@ -127,7 +127,7 @@ class _mNavbarState extends State<mNavbar> {
                   ],
                 ),
               ),
-            ),
+            )
           ],
         ),
       ),

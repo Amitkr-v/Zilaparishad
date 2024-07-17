@@ -13,7 +13,7 @@ class _Page1State extends State<Page1> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth=MediaQuery.of(context).size.width;
+    double screenWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(90, 100, 30, 0),
       child: Row(
@@ -49,27 +49,30 @@ class _Page1State extends State<Page1> {
                         TextSpan(
                           text: 'Empowering ',
                           style: TextStyle(
-                            color: Colors.black,
+                            fontFamily: 'Comfortaa',
+                            color: Color(0xFF131842),
                             fontSize: 40,
-                            letterSpacing: 1.5,
-                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         TextSpan(
                           text: 'Nalanda ',
-                          style: GoogleFonts.poppins(
-                              color: Color(0xFF5824ff), // Highlight color
+                          style: TextStyle(
+                              fontFamily: 'Comfortaa',
+                              color: Color.fromARGB(255, 252, 110, 39), // Highlight color
                               fontSize: 40,
-                              letterSpacing: 1.5,
+                              letterSpacing: 1,
                               fontWeight: FontWeight.w600),
                         ),
                         TextSpan(
                           text: 'Zila Parishad through transparent monitoring',
                           style: TextStyle(
-                            color: Colors.black,
+                            fontFamily: 'Comfortaa',
+                            color: Color(0xFF131842),
                             fontSize: 40,
-                            letterSpacing: 1.5,
-                            fontWeight: FontWeight.w600,
+                            letterSpacing: 1,
+                            fontWeight: FontWeight.bold,
                           ),
                         ),
                       ],
@@ -83,7 +86,7 @@ class _Page1State extends State<Page1> {
                     child: Text(
                       'Monitor progress and ensure community development\n',
                       style: TextStyle(
-                        color: Color(0xFF2E2D2C),
+                        color: Color(0xFF131842),
                         letterSpacing: 1,
                         fontWeight: FontWeight.w500,
                         fontSize: 20,
@@ -277,10 +280,8 @@ class _Page1State extends State<Page1> {
                     Padding(
                       padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
                       child: Container(
-                        
                         width: screenWidth * 0.38,
                         height: MediaQuery.of(context).size.height * 0.6,
-                      
                         child: ClipRRect(
                           borderRadius: BorderRadius.zero,
                           child: Image.asset(

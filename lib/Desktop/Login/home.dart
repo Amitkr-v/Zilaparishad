@@ -3,7 +3,7 @@ import 'package:responsive_builder/responsive_builder.dart';
 import 'package:zilaparishad/Desktop/Login/Login.dart';
 import 'package:zilaparishad/Desktop/Page1/Page1.dart';
 import 'package:zilaparishad/Desktop/Page2/Page2.dart';
-import 'package:zilaparishad/Desktop/navbar.dart';
+import 'package:zilaparishad/Desktop/Navbar/navbar.dart';
 import 'package:zilaparishad/Mobile/mlogin.dart';
 
 class LoginHome extends StatelessWidget {
