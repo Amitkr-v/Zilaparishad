@@ -432,10 +432,8 @@ class _Page2State extends State<Page2> {
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => NewPage(
-                  financialHead: schemeItemList[1].fh,
-                  financialYear: schemeItemList[1].fy,
-                  schemeName: schemeItemList[1].sn)),
+              builder: (context) =>
+                  NewPage(Scheme_name, financial_head, fin_year)),
         );
       },
       child: MouseRegion(

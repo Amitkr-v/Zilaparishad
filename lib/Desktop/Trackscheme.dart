@@ -4,17 +4,14 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class NewPage extends StatefulWidget {
-  final String financialHead;
-  final String financialYear;
   final String schemeName;
+  final String schemeFinHead;
+  final String schemeFinYear;
+  NewPage(this.schemeName, this.schemeFinHead, this.schemeFinYear);
 
-  NewPage({
-    required this.financialHead,
-    required this.financialYear,
-    required this.schemeName,
-  });
   @override
-  _NewPageState createState() => _NewPageState();
+  _NewPageState createState() =>
+      _NewPageState(schemeName, schemeFinHead, schemeFinYear);
 }
 
 class _NewPageState extends State<NewPage> {
@@ -35,11 +32,15 @@ class _NewPageState extends State<NewPage> {
   Color textColor = Colors.white;
   int counter = 0;
 
+  final String schemeName;
+  final String schemeFinHead;
+  final String schemeFinYear;
+  _NewPageState(this.schemeName, this.schemeFinHead, this.schemeFinYear);
+
   @override
   Widget build(BuildContext context) {
     double wid = MediaQuery.of(context).size.width;
     double hei = MediaQuery.of(context).size.height;
-
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Color(0xff004AAD),
@@ -60,36 +61,35 @@ class _NewPageState extends State<NewPage> {
                 height: 15,
               ),
               Container(
-                //width: wid * 0.45,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
-                  color: Color.fromARGB(255, 210, 210, 210),
+                  color: Color.fromARGB(255, 246, 195, 255),
                 ),
-                
+                width: wid * 0.75,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Financial Head : ${widget.financialHead}',
+                    Text('Financial Head :$schemeFinHead',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
                             fontFamily: 'lato1',
                             decoration: TextDecoration.none)),
                     SizedBox(width: 40),
-                    Text('Financial Year :${widget.financialYear}',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontFamily: 'lato1',
-                            decoration: TextDecoration.none)),
-                    SizedBox(width: 40),
-                    Text('Scheme Name :${widget.schemeName}',
+                    Text('Scheme Name : $schemeName',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
                             fontFamily: 'lato1',
                             decoration: TextDecoration.none,
                             fontWeight: FontWeight.normal)),
+                    SizedBox(width: 40),
+                    Text('Financial Year : $schemeFinYear',
+                        style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 20,
+                            fontFamily: 'lato1',
+                            decoration: TextDecoration.none)),
                   ],
                 ),
               ),
