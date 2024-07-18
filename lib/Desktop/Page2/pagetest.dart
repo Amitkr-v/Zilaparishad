@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:zilaparishad/Desktop/Page1/Page1Home.dart';
 import 'package:zilaparishad/Desktop/Searchbox.dart';
 import 'package:zilaparishad/Desktop/Trackscheme.dart';
 import 'package:zilaparishad/Model.dart';
@@ -162,7 +163,7 @@ class _Page2State extends State<Page21> {
                 () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => NewPage()),
+                    MaterialPageRoute(builder: (context) => Home()),
                   );
                 },
                 (isHovered) {
