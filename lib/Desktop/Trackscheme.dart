@@ -60,11 +60,12 @@ class _NewPageState extends State<NewPage> {
                 height: 15,
               ),
               Container(
+                //width: wid * 0.45,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                   color: Color.fromARGB(255, 210, 210, 210),
                 ),
-                width: wid * 0.45,
+                
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
