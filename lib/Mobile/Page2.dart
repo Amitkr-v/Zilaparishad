@@ -436,7 +436,11 @@ class _mPage2State extends State<mPage2> {
       onTap: () {
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => NewPage()),
+          MaterialPageRoute(
+              builder: (context) => NewPage(
+                  financialHead: schemeItemList[1].fh,
+                  financialYear: schemeItemList[1].fy,
+                  schemeName: schemeItemList[1].sn)),
         );
       },
       child: MouseRegion(

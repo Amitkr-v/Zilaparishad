@@ -4,6 +4,15 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class NewPage extends StatefulWidget {
+  final String financialHead;
+  final String financialYear;
+  final String schemeName;
+
+  NewPage({
+    required this.financialHead,
+    required this.financialYear,
+    required this.schemeName,
+  });
   @override
   _NewPageState createState() => _NewPageState();
 }
@@ -30,6 +39,7 @@ class _NewPageState extends State<NewPage> {
   Widget build(BuildContext context) {
     double wid = MediaQuery.of(context).size.width;
     double hei = MediaQuery.of(context).size.height;
+
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Color(0xff004AAD),
@@ -58,21 +68,21 @@ class _NewPageState extends State<NewPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Financial Head : XYZ',
+                    Text('Financial Head : ${widget.financialHead}',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
                             fontFamily: 'lato1',
                             decoration: TextDecoration.none)),
                     SizedBox(width: 40),
-                    Text('Financial Year : XYZ',
+                    Text('Financial Year :${widget.financialYear}',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
                             fontFamily: 'lato1',
                             decoration: TextDecoration.none)),
                     SizedBox(width: 40),
-                    Text('Scheme Name : XYZ',
+                    Text('Scheme Name :${widget.schemeName}',
                         style: TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -104,14 +114,27 @@ class _NewPageState extends State<NewPage> {
     callCount++; // Increment call count after checking roc
 
     List<String> rowData = [
-      "Scheme Details", "NOC Letters", "DPRO Approval", "DDC Approval"
+      "Scheme Details",
+      "NOC Letters",
+      "DPRO Approval",
+      "DDC Approval"
     ];
 
     if (i == 1) {
-      rowData = ["Ex Engg MB, Bills", "MB Approved by TA", "TA Monitoring", "Ex Engg Work Order"];
+      rowData = [
+        "Ex Engg MB, Bills",
+        "MB Approved by TA",
+        "TA Monitoring",
+        "Ex Engg Work Order"
+      ];
     } else if (i == 2) {
-      rowData = ["Inspection by Ex Engg", "Accountant File Put Up", "DDC Final Approval", "Scheme Completed"];
-    } 
+      rowData = [
+        "Inspection by Ex Engg",
+        "Accountant File Put Up",
+        "DDC Final Approval",
+        "Scheme Completed"
+      ];
+    }
 
     return Stack(
       alignment: Alignment.center,
@@ -127,7 +150,8 @@ class _NewPageState extends State<NewPage> {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
-            for (var text in rowData) chip(text, wid, hei, textColor, background),
+            for (var text in rowData)
+              chip(text, wid, hei, textColor, background),
           ],
         ),
         roc
@@ -154,73 +178,74 @@ class _NewPageState extends State<NewPage> {
   }
 
   Container chip(
-      String t1, double wid, double hei, Color colort, Color colorb ) {
+      String t1, double wid, double hei, Color colort, Color colorb) {
     return Container(
-      alignment: Alignment.center,
-      width: MediaQuery.of(context).size.width / 8,
-      height: MediaQuery.of(context).size.height / 4.7,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        // color:Colors.black,
-        // color:Colors.white,
-      ),
-      child : 
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Stack(
-            alignment: Alignment.center,
-            children: [
-              Positioned(
-                child: Container(
-                  width: 60,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(30),
-                    color: colorb,
+        alignment: Alignment.center,
+        width: MediaQuery.of(context).size.width / 8,
+        height: MediaQuery.of(context).size.height / 4.7,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          // color:Colors.black,
+          // color:Colors.white,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                Positioned(
+                  child: Container(
+                    width: 60,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(30),
+                      color: colorb,
+                    ),
                   ),
                 ),
-              ),
-              Icon(
-                circle_outlined,
-                size: 35,
-                color: colort,
-              ),
-            ],
-          ),
-          Text(t1,
-              style: TextStyle(
-                  color: textColor,
-                  fontFamily: 'lato',
-                  fontSize: 18,
-                  decoration: TextDecoration.none,
-                  fontWeight: FontWeight.w400)),
-                  SizedBox(height: 5,),
-                  Text('Click here to download!',
-                   style: TextStyle(
+                Icon(
+                  circle_outlined,
+                  size: 35,
+                  color: colort,
+                ),
+              ],
+            ),
+            Text(t1,
+                style: TextStyle(
+                    color: textColor,
+                    fontFamily: 'lato',
+                    fontSize: 18,
+                    decoration: TextDecoration.none,
+                    fontWeight: FontWeight.w400)),
+            SizedBox(
+              height: 5,
+            ),
+            Text('Click here to download!',
+                style: TextStyle(
                   color: textColor,
                   fontFamily: 'lato1',
                   fontSize: 16,
-                  )
-                  ),
-                  SizedBox(height: 5,),
-          Padding(
-            padding: EdgeInsets.only(left: 15),
-            child: Container(
-              width: MediaQuery.of(context).size.width / 12,
-              child: Text(
-                  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do',
-                  style: TextStyle(
-                      fontFamily: 'lato1',
-                      fontSize: 14,
-                      color: textColor,
-                      decoration: TextDecoration.none,
-                      fontWeight: FontWeight.normal)),
+                )),
+            SizedBox(
+              height: 5,
             ),
-          ),
-        ],
-      )
-    );
+            Padding(
+              padding: EdgeInsets.only(left: 15),
+              child: Container(
+                width: MediaQuery.of(context).size.width / 12,
+                child: Text(
+                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do',
+                    style: TextStyle(
+                        fontFamily: 'lato1',
+                        fontSize: 14,
+                        color: textColor,
+                        decoration: TextDecoration.none,
+                        fontWeight: FontWeight.normal)),
+              ),
+            ),
+          ],
+        ));
   }
 }
 
@@ -263,7 +288,8 @@ class SemicirclePainter extends CustomPainter {
     double radius = size.width / 2;
 
     canvas.drawArc(
-      Rect.fromCircle(center: Offset(size.width / 2, size.height), radius: radius),
+      Rect.fromCircle(
+          center: Offset(size.width / 2, size.height), radius: radius),
       pi - 1.6,
       pi,
       false,
@@ -293,7 +319,8 @@ class SemicirclePainter1 extends CustomPainter {
     double radius = size.width / 2;
 
     canvas.drawArc(
-      Rect.fromCircle(center: Offset(size.width / 2, size.height), radius: radius),
+      Rect.fromCircle(
+          center: Offset(size.width / 2, size.height), radius: radius),
       pi + 1.55,
       pi,
       false,
