@@ -248,7 +248,7 @@ class _mPage1State extends State<mPage1> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.zero,
                       child: Image.asset(
-                        'assets/images/mgif.gif',
+                        'assets/images/Home.png',
                         fit: BoxFit.contain,
                       ),
                     ),

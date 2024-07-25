@@ -15,7 +15,10 @@ class _Page1State extends State<Page1> {
   Widget build(BuildContext context) {
     double screenWidth = MediaQuery.of(context).size.width;
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(90, 100, 30, 0),
+      padding: EdgeInsets.symmetric(
+        vertical: MediaQuery.of(context).size.height * 0.03,
+        horizontal: screenWidth * 0.05,
+      ),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -60,7 +63,8 @@ class _Page1State extends State<Page1> {
                           text: 'Nalanda ',
                           style: TextStyle(
                               fontFamily: 'Comfortaa',
-                              color: Color.fromARGB(255, 252, 110, 39), // Highlight color
+                              color: Color.fromARGB(
+                                  255, 252, 110, 39), // Highlight color
                               fontSize: 40,
                               letterSpacing: 1,
                               fontWeight: FontWeight.w600),
@@ -177,7 +181,7 @@ class _Page1State extends State<Page1> {
                       children: [
                         Padding(
                             padding:
-                                EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                             child: Text(
                               '\n',
                               style: TextStyle(
@@ -222,7 +226,7 @@ class _Page1State extends State<Page1> {
                         children: [
                           Padding(
                               padding:
-                                  EdgeInsetsDirectional.fromSTEB(0, 20, 0, 10),
+                                  EdgeInsetsDirectional.fromSTEB(0, 0, 0, 10),
                               child: Text(
                                 '\n',
                                 style: TextStyle(
@@ -269,32 +273,35 @@ class _Page1State extends State<Page1> {
           ),
           Flexible(
             flex: 9,
-            child: Column(children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 0, 10, 0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.min,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                      child: Container(
-                        width: screenWidth * 0.38,
-                        height: MediaQuery.of(context).size.height * 0.6,
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.zero,
-                          child: Image.asset(
-                            'assets/images/Home.png',
-                            fit: BoxFit.contain,
+            child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(40, 0, 10, 0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 0),
+                          child: Container(
+                            width: screenWidth * 0.34,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.zero,
+                              child: Image.asset(
+                                'assets/images/Home.png',
+                                fit: BoxFit.contain,
+                              ),
+                            ),
                           ),
                         ),
-                      ),
+                      ],
                     ),
-                  ],
-                ),
-              ),
-            ]),
+                  ),
+                ]),
           ),
         ],
       ),
