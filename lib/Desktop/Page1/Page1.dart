@@ -16,7 +16,7 @@ class _Page1State extends State<Page1> {
     double screenWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: EdgeInsets.symmetric(
-        vertical: MediaQuery.of(context).size.height * 0.03,
+        vertical: MediaQuery.of(context).size.height * 0.08,
         horizontal: screenWidth * 0.05,
       ),
       child: Row(

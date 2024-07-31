@@ -48,9 +48,7 @@ class DesktopLayout extends StatelessWidget {
                             start: 30, top: 50, end: 30),
                         child: Page1(),
                       ),
-                      SizedBox(
-                        height: 100,
-                      ),
+                     
                       Container(
                         width: screenWidth,
                         child: Page2(),
