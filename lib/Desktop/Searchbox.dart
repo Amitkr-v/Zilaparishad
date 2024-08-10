@@ -29,7 +29,7 @@ class _Search1State extends State<search1> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => NewPage('scheme_name','financial_head','fin_year'),
+        builder: (context) => NewPage(),
       ),
     );
   }

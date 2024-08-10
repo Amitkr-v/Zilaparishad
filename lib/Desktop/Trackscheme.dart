@@ -1,336 +1,575 @@
-import 'package:flutter/animation.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-class NewPage extends StatefulWidget {
-  final String schemeName;
-  final String schemeFinHead;
-  final String schemeFinYear;
-  NewPage(this.schemeName, this.schemeFinHead, this.schemeFinYear);
+import 'package:url_launcher/url_launcher.dart';
 
+class NewPage extends StatelessWidget {
   @override
-  _NewPageState createState() =>
-      _NewPageState(schemeName, schemeFinHead, schemeFinYear);
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Color(0xff0E4C9F), // Set background to sky blue
+        body: ZilaPage(
+          schemeName: "Scheme Name : RoadtoWatertanki",
+          schemeFinHead: "Financial Head : 6th S.F.C",
+          schemeFinYear: "Financial Year : 2024-25",
+        ),
+      ),
+    );
+  }
 }
 
-class _NewPageState extends State<NewPage> {
-  static const IconData circle_outlined =
-      IconData(0xef53, fontFamily: 'MaterialIcons');
-  static const IconData linear_scale_rounded =
-      IconData(0xf858, fontFamily: 'MaterialIcons');
-  static const IconData linear_scale_sharp =
-      IconData(0xea79, fontFamily: 'MaterialIcons');
-  static const IconData line_weight_sharp =
-      IconData(0xea78, fontFamily: 'MaterialIcons');
-  static const IconData circle_outlined2 =
-      IconData(0xef53, fontFamily: 'MaterialIcons');
-
-  bool oe = false;
-
-  Color background = Color(0xff004AAD);
-  Color textColor = Colors.white;
-  int counter = 0;
-
+class ZilaPage extends StatelessWidget {
   final String schemeName;
   final String schemeFinHead;
   final String schemeFinYear;
-  _NewPageState(this.schemeName, this.schemeFinHead, this.schemeFinYear);
+
+  ZilaPage({
+    required this.schemeName,
+    required this.schemeFinHead,
+    required this.schemeFinYear,
+  });
+
+  final List<String> rowData1 = [
+    "Scheme Details",
+    "NOC Letters",
+    "ACO Approval",
+    "DDC Approval"
+  ];
+  final List<String> rowData2 = [
+    "Ex Engg MB, Bills",
+    "MB Approved by TA",
+    "TA Monitoring",
+    "Ex Engg Work Order",
+  ];
+  final List<String> rowData3 = [
+    "Inspection by Ex Engg",
+    "Accountant File Put Up",
+    "DDC Final Approval",
+    "Scheme Completed"
+  ];
 
   @override
   Widget build(BuildContext context) {
-    double wid = MediaQuery.of(context).size.width;
-    double hei = MediaQuery.of(context).size.height;
-    return MaterialApp(
-      home: Scaffold(
-        backgroundColor: Color(0xff004AAD),
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              SizedBox(
-                height: 20,
+    return SingleChildScrollView(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text(
+              'Zila Parishad Nalanda',
+              style: TextStyle(
+                  fontSize: 48,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white),
+            ),
+            SizedBox(height: 30),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.7,
+              decoration: BoxDecoration(
+                color: Colors.pink[100],
+                borderRadius: BorderRadius.circular(20),
               ),
-              Text('ZILA PARISHAD NALANDA',
-                  style: TextStyle(
-                      color: textColor,
-                      fontSize: 50,
-                      fontFamily: 'poppins',
-                      decoration: TextDecoration.none)),
-              SizedBox(height: 20),
-              SizedBox(
-                height: 15,
+              padding: const EdgeInsets.all(8.0),
+              margin: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                children: [
+                  Text(
+                    schemeName,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    schemeFinHead,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    schemeFinYear,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ],
               ),
-              Container(
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Color.fromARGB(255, 246, 195, 255),
-                ),
-                width: wid * 0.75,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Financial Head :$schemeFinHead',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontFamily: 'lato1',
-                            decoration: TextDecoration.none)),
-                    SizedBox(width: 40),
-                    Text('Scheme Name : $schemeName',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontFamily: 'lato1',
-                            decoration: TextDecoration.none,
-                            fontWeight: FontWeight.normal)),
-                    SizedBox(width: 40),
-                    Text('Financial Year : $schemeFinYear',
-                        style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 20,
-                            fontFamily: 'lato1',
-                            decoration: TextDecoration.none)),
-                  ],
-                ),
-              ),
-              SizedBox(height: 30),
-              for (int i = 0; i < 3; i++) ...[
-                roc(hei, wid, i),
-                SizedBox(height: 60),
+            ),
+            SizedBox(height: 60),
+            Column(
+              children: [
+                buildRow(context, rowData1, 1),
+                buildRow(context, rowData2, 2),
+                buildRow(context, rowData3, 3),
               ],
-              SizedBox(height: 100),
-            ],
-          ),
+            )
+          ],
         ),
       ),
     );
   }
 
-  int callCount = 0;
-
-  Stack roc(double hei, double wid, int i) {
-    bool curve = false;
-    bool roc = (callCount % 2 == 1); // roc is true on every odd call
-
-    callCount++; // Increment call count after checking roc
-
-    List<String> rowData = [
-      "Scheme Details",
-      "NOC Letters",
-      "DPRO Approval",
-      "DDC Approval"
-    ];
-
-    if (i == 1) {
-      rowData = [
-        "Ex Engg MB, Bills",
-        "MB Approved by TA",
-        "TA Monitoring",
-        "Ex Engg Work Order"
-      ];
-    } else if (i == 2) {
-      rowData = [
-        "Inspection by Ex Engg",
-        "Accountant File Put Up",
-        "DDC Final Approval",
-        "Scheme Completed"
-      ];
-    }
-
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        Positioned(
-          top: 27,
-          child: Container(
-            color: textColor,
-            height: 4,
-            width: MediaQuery.of(context).size.width * 0.75,
-          ),
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            for (var text in rowData)
-              chip(text, wid, hei, textColor, background),
-          ],
-        ),
-        roc
-            ? Positioned(
-                top: 29,
-                left: 65,
-                child: SemicircleWidget(
-                    radius: 116,
-                    strokeWidth: 4,
-                    color: textColor,
-                    curve: curve),
-              )
-            : Positioned(
-                top: 29,
-                right: 65,
-                child: SemicircleWidget(
-                    radius: 116,
-                    strokeWidth: 4,
-                    color: textColor,
-                    curve: curve = true), // curve = true
-              )
-      ],
-    );
-  }
-
-  Container chip(
-      String t1, double wid, double hei, Color colort, Color colorb) {
+  Widget buildRow(BuildContext context, List<String> rowData, int u) {
     return Container(
-        alignment: Alignment.center,
-        width: MediaQuery.of(context).size.width / 8,
-        height: MediaQuery.of(context).size.height / 4.7,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          // color:Colors.black,
-          // color:Colors.white,
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                Positioned(
-                  child: Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(30),
-                      color: colorb,
-                    ),
-                  ),
-                ),
-                Icon(
-                  circle_outlined,
-                  size: 35,
-                  color: colort,
-                ),
-              ],
-            ),
-            Text(t1,
-                style: TextStyle(
-                    color: textColor,
-                    fontFamily: 'lato',
-                    fontSize: 18,
-                    decoration: TextDecoration.none,
-                    fontWeight: FontWeight.w400)),
-            SizedBox(
-              height: 5,
-            ),
-            Text('Click here to download!',
-                style: TextStyle(
-                  color: textColor,
-                  fontFamily: 'lato1',
-                  fontSize: 16,
-                )),
-            SizedBox(
-              height: 5,
-            ),
-            Padding(
-              padding: EdgeInsets.only(left: 15),
-              child: Container(
-                width: MediaQuery.of(context).size.width / 12,
-                child: Text(
-                    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do',
-                    style: TextStyle(
-                        fontFamily: 'lato1',
-                        fontSize: 14,
-                        color: textColor,
-                        decoration: TextDecoration.none,
-                        fontWeight: FontWeight.normal)),
+      margin: EdgeInsets.all(5),
+      padding: EdgeInsets.all(10),
+      child: Stack(
+        children: [
+          Positioned.fill(
+            left: MediaQuery.of(context).size.width * 0.13,
+            bottom: 100,
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: CustomPaint(
+                painter: LinePainter(),
+                size: Size(MediaQuery.of(context).size.width * 0.72, 0),
               ),
             ),
+          ),
+          if (u == 1)
+            Positioned.fill(
+              right: 18,
+              bottom: 105,
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: CustomPaint(
+                  painter: SemiCirclePainter(),
+                  size: Size(MediaQuery.of(context).size.width * 0.82, 0),
+                ),
+              ),
+            )
+          else if (u == 2)
+            Positioned.fill(
+              right: MediaQuery.of(context).size.width * 0.83,
+              bottom: 105,
+              child: Align(
+                alignment: Alignment.centerLeft,
+                child: CustomPaint(
+                  painter: SemiCirclePainter2(),
+                  size: Size(MediaQuery.of(context).size.width * 0.82, 0),
+                ),
+              ),
+            ),
+          Container(
+            padding: EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: Colors.transparent,
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: List.generate(4, (colIndex) {
+                return Container(
+                  margin: const EdgeInsets.all(4.0),
+                  child: CustomChip(rowData, colIndex, context, u),
+                );
+              }),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget CustomChip(
+      List<String> rowData, int colIndex, BuildContext context, int r) {
+    return StatefulBuilder(
+      builder: (context, setState) {
+        late bool isHovered = false;
+
+        return MouseRegion(
+          onEnter: (_) => setState(() => isHovered = true),
+          onExit: (_) => setState(() => isHovered = false),
+          child: Container(
+            alignment: Alignment.center,
+            width: MediaQuery.of(context).size.width * 0.2,
+            decoration: BoxDecoration(
+              // color: isHovered ? Color.fromARGB(255, 3, 166, 98) : Colors.deepPurpleAccent[100],
+
+              // boxShadow: [
+              //   BoxShadow(
+              //     // color:  isHovered ? Color.fromARGB(255, 26, 159, 62) : Colors.white.withOpacity(0.2),
+              //     blurRadius: 4,
+              //     spreadRadius: 2,
+              //     offset: Offset(0, 2),
+              //   ),
+              // ],
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Stack(
+                  children: [
+                    Container(
+                      width: 40,
+                      height: 40,
+                      decoration: BoxDecoration(
+                        color: Color(0xff0E4C9F),
+                        shape: BoxShape.circle,
+                      ),
+                    ),
+                    Icon(
+                      Icons.panorama_fish_eye,
+                      size: 40,
+                      color: Colors.blue, // Circle color
+                    ),
+                  ],
+                ),
+                SizedBox(height: 20),
+                GestureDetector(
+                    onTap: () {
+                      if (r == 1 && colIndex == 1)
+                        showDialog(
+                          context: context,
+                          // useRootNavigator: false,
+                          // Navigator.pop(context, true),
+                          builder: (BuildContext context) {
+                            return Container(
+                                child:
+                                    PDFdownloadNOC(context, rowData[colIndex]));
+                          },
+                        );
+                      if (r == 1 && colIndex != 1)
+                        showDialog(
+                          context: context,
+                          // useRootNavigator: false,
+                          // Navigator.pop(context, true),
+                          builder: (BuildContext context) {
+                            return Container(
+                                child: PDFdownloadScheme(
+                                    context, rowData[colIndex]));
+                          },
+                        );
+                      else if (r == 2)
+                        showDialog(
+                          context: context,
+                          // useRootNavigator: false,
+                          // Navigator.pop(context, true),
+                          builder: (BuildContext context) {
+                            return Container(
+                                child: PDFdownloadScheme(
+                                    context, rowData[colIndex]));
+                          },
+                        );
+                      else if (r == 3)
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) {
+                            return Container(
+                                child: PDFdownloadScheme(
+                                    context, rowData[colIndex]));
+                          },
+                        );
+                    },
+                    child: Text(
+                      rowData[colIndex],
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold),
+                    )),
+                SizedBox(height: 7),
+                Row(mainAxisAlignment: MainAxisAlignment.center, children: [
+                  Text(
+                    'Comment ,',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
+                  ),
+                  SizedBox(
+                    width: 10,
+                  ),
+                  Text(
+                    'Date/Time',
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: Colors.white,
+                    ),
+                  ),
+                ]),
+                SizedBox(height: 20),
+              ],
+            ),
+          ),
+        );
+      },
+    );
+  }
+}
+
+class LinePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.white
+      ..strokeWidth = 3;
+
+    canvas.drawLine(
+      Offset(0, size.height / 2),
+      Offset(size.width, size.height / 2),
+      paint,
+    );
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
+class SemiCirclePainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.white
+      ..strokeWidth = 3
+      ..style = PaintingStyle.stroke;
+
+    double radius = 100; // Adjust as needed
+    double centerX = size.width * 0.87;
+    double centerY = radius;
+
+    Rect rect =
+        Rect.fromCircle(center: Offset(centerX, centerY), radius: radius);
+    canvas.drawArc(rect, -pi / 2, pi, false, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
+class SemiCirclePainter2 extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = Colors.white
+      ..strokeWidth = 3
+      ..style = PaintingStyle.stroke;
+
+    double radius = 100; // Adjust as needed
+    double centerX = size.width * 0.87;
+    double centerY = radius;
+
+    Rect rect =
+        Rect.fromCircle(center: Offset(centerX, centerY), radius: radius);
+    canvas.drawArc(rect, pi / 2, pi, false, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) => false;
+}
+
+Center PDFdownloadNOC(BuildContext context, t1) {
+  const IconData download_for_offline = IconData(
+    0xe203,
+    fontFamily: 'MaterialIcons',
+  );
+  return Center(
+    child: Container(
+        height: MediaQuery.of(context).size.height * 0.6,
+        width: MediaQuery.of(context).size.width * 0.7,
+        color: Colors.white,
+        alignment: Alignment.center,
+        child: Stack(
+          children: [
+            Positioned(
+                child: Container(
+                    height: 70,
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    color: Color.fromARGB(98, 139, 166, 255))),
+            Column(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  t1,
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.none),
+                ),
+                SizedBox(
+                  height: 70,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    smallChip(download_for_offline, 'BDO', context),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    smallChip(download_for_offline, 'CO', context),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    smallChip(download_for_offline, 'PO', context),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    smallChip(download_for_offline, 'Ex Engineer', context),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    smallChip(download_for_offline, 'TA', context),
+                    // SizedBox(width: 20,),
+                    // Container(),
+                    // Container(),
+                  ],
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                Text(
+                  'Comment...',
+                  style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  'Date / Time...',
+                  style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24),
+                )
+              ],
+            ),
           ],
-        ));
-  }
+        )),
+  );
 }
 
-class SemicircleWidget extends StatelessWidget {
-  final double radius;
-  final double strokeWidth;
-  final Color color;
-  bool curve;
-
-  SemicircleWidget(
-      {required this.radius,
-      required this.strokeWidth,
-      required this.color,
-      required this.curve});
-
-  @override
-  Widget build(BuildContext context) {
-    return CustomPaint(
-      painter: curve
-          ? SemicirclePainter1(strokeWidth: strokeWidth, color: color)
-          : SemicirclePainter(strokeWidth: strokeWidth, color: color),
-      size: Size(radius * 2, radius),
-    );
-  }
+GestureDetector smallChip(
+    IconData download_for_offline, String holder, context) {
+  return GestureDetector(
+      onTap: () async {
+        const url = 'https://rti.gov.in/rti-act.pdf';
+        if (await canLaunch(url)) {
+          await launch(url);
+        } else {
+          throw 'Could not launch $url';
+        }
+      },
+      child: Container(
+          width: 150,
+          height: 165,
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: Color.fromARGB(255, 221, 238, 226)),
+          child: Column(
+            children: [
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                  height: 60,
+                  width: 60,
+                  child: Image.asset('assets/images/doneTick.png',
+                      fit: BoxFit.cover)),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                child: Icon(
+                  download_for_offline,
+                  size: 45,
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Text(
+                holder,
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 20,
+                    fontWeight: FontWeight.bold,
+                    decoration: TextDecoration.none),
+              ),
+            ],
+          )));
 }
 
-class SemicirclePainter extends CustomPainter {
-  final double strokeWidth;
-  final Color color;
-
-  SemicirclePainter({required this.strokeWidth, required this.color});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..color = color
-      ..strokeWidth = strokeWidth
-      ..style = PaintingStyle.stroke;
-
-    double radius = size.width / 2;
-
-    canvas.drawArc(
-      Rect.fromCircle(
-          center: Offset(size.width / 2, size.height), radius: radius),
-      pi - 1.6,
-      pi,
-      false,
-      paint,
-    );
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
-  }
+Center PDFdownloadScheme(BuildContext context, t1) {
+  const IconData download_for_offline = IconData(
+    0xe203,
+    fontFamily: 'MaterialIcons',
+  );
+  return Center(
+    child: Container(
+        height: MediaQuery.of(context).size.height * 0.6,
+        width: MediaQuery.of(context).size.width * 0.7,
+        color: Colors.white,
+        alignment: Alignment.center,
+        child: Stack(
+          children: [
+            Positioned(
+                child: Container(
+                    height: 70,
+                    width: MediaQuery.of(context).size.width * 0.7,
+                    color: Color.fromARGB(98, 139, 166, 255))),
+            Column(
+              children: [
+                SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  t1,
+                  style: TextStyle(
+                      color: Color.fromARGB(255, 0, 0, 0),
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      decoration: TextDecoration.none),
+                ),
+                SizedBox(
+                  height: 70,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    smallChip(download_for_offline, 'PDF', context),
+                  ],
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                Text(
+                  'Comment...',
+                  style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24),
+                ),
+                SizedBox(
+                  height: 30,
+                ),
+                Text(
+                  'Date / Time...',
+                  style: TextStyle(
+                      fontFamily: 'Roboto',
+                      fontWeight: FontWeight.bold,
+                      fontSize: 24),
+                )
+              ],
+            ),
+          ],
+        )),
+  );
 }
 
-class SemicirclePainter1 extends CustomPainter {
-  final double strokeWidth;
-  final Color color;
-
-  SemicirclePainter1({required this.strokeWidth, required this.color});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    Paint paint = Paint()
-      ..color = color
-      ..strokeWidth = strokeWidth
-      ..style = PaintingStyle.stroke;
-
-    double radius = size.width / 2;
-
-    canvas.drawArc(
-      Rect.fromCircle(
-          center: Offset(size.width / 2, size.height), radius: radius),
-      pi + 1.55,
-      pi,
-      false,
-      paint,
-    );
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) {
-    return false;
-  }
-}
+// Center Gallery(BuildContext context, t1) {
+//   List<String> images = [
+//     'https://www.constructionworld.in/assets/uploads/5bc9764b46be5cadb65451b343b45c0e.jpg',
+//     'https://advancedct.com/wp-content/uploads/2021/09/shutterstock_92209726.jpg',
+//     'https://www.tensar.co.uk/getattachment/88d9dbe1-d1e3-495a-8ebe-f1ede3df0fda/york-potash-(2).jpg',
+//     'https://studiomatter.in/wp-content/uploads/2020/06/dsc3067_01-1.jpg?w=1500',
+//     'https://studiomatter.in/wp-content/uploads/2020/06/477c6-construction-process-1.jpg?w=4000&h=',
+//     'https://www.constructionworld.in/assets/uploads/5bc9764b46be5cadb65451b343b45c0e.jpg',
+//     'https://www.constructionworld.in/assets/uploads/5bc9764b46be5cadb65451b343b45c0e.jpg',
+//     'https://advancedct.com/wp-content/uploads/2021/09/shutterstock_92209726.jpg',
+    
+//   ];

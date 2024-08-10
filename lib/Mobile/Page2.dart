@@ -438,7 +438,7 @@ class _mPage2State extends State<mPage2> {
           context,
           MaterialPageRoute(
               builder: (context) => NewPage(
-                  Scheme_name, financial_head, fin_year)),
+                  )),
         );
       },
       child: MouseRegion(

@@ -433,7 +433,7 @@ class _Page2State extends State<Page2> {
           context,
           MaterialPageRoute(
               builder: (context) =>
-                  NewPage(Scheme_name, financial_head, fin_year)),
+                  NewPage()),
         );
       },
       child: MouseRegion(
